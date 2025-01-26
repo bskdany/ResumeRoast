@@ -1,13 +1,8 @@
 // src/components/Header.tsx
 
 import React from 'react';
-import styles from './Header.module.css'; // Importing CSS module for styling
-import logo from "../../assets/logo.png"
+import styles from './Header.module.css';
 
-/**
- * Header Component
- * Displays the application title and a logo.
- */
 const Header: React.FC = () => {
   return (
     <header className={styles.header}>

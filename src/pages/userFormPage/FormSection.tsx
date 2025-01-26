@@ -50,7 +50,12 @@ const FormSection: React.FC = () => {
 
   // Validate form inputs
   const validate = () => {
-    const newErrors: { [key: string]: string } = {};
+    const newErrors: { name: string; jobTitle: string; tolerance: string; cv: string } = {
+      name: '',
+      jobTitle: '',
+      tolerance: '',
+      cv: '',
+    };
 
     if (!formData.name.trim()) {
       newErrors.name = 'Name is required.';
