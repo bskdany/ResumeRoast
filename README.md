@@ -1,4 +1,7 @@
-# React + TypeScript + Vite
+# Resume Wrecker Frontend
+
+### This is the frontend for the Resume Wrecker submission for McHacks 12!
+
 
 This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
 
