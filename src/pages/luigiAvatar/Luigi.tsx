@@ -32,6 +32,9 @@ const Luigi = () => {
         const audio = new Audio(url);
         audioRef.current = audio;
 
+        // Set playback rate to play the audio faster
+        audio.playbackRate = 1.3;
+
         // Auto-play and handle audio state
         audio
           .play()
