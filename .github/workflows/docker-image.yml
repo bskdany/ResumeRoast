@@ -14,8 +14,8 @@ jobs:
     - name: Check out the code
       uses: actions/checkout@v4
 
-    - name: Log in to Docker Hub
-      run: echo "${{ secrets.DOCKER_HUB_PASSWORD }}" | docker login -u "${{ secrets.DOCKER_HUB_USERNAME }}" --password-stdin
+    - name: Log in to Docker Hub with PAT
+      run: echo "${{ secrets.DOCKER_HUB_PAT }}" | docker login --username "${{ secrets.DOCKER_HUB_USERNAME }}" --password-stdin
 
     - name: Build the Docker image
       run: docker build . --file Dockerfile --tag bskdanny/mchacks:latest
