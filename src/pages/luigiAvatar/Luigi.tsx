@@ -3,7 +3,7 @@ const Luigi = () => {
   const [isAudioPresent, setIsAudioPresent] = useState(false);
   const audioRef = useRef<HTMLAudioElement | null>(null);
 
-  const imageList = ['drill_sergent1.png', 'drill_sergent2.png', 'drill_sergent3.png', 'drill_sergent4.png', 'drill_sergent5.png4'];
+  const imageList = ['drill_sergent1.png', 'drill_sergent2.png', 'drill_sergent3.png', 'drill_sergent4.png', 'drill_sergent5.png'];
   const [currentImage, setCurrentImage] = useState<string>(imageList[0]);
 
   const getRandomImage = () => {
