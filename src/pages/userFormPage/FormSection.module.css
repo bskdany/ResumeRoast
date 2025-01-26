@@ -14,7 +14,7 @@
   
   /* Form Container with dark gray background and neon green glowing border */
   .formContainer {
-    background: #deecfa; /* Dark Gray Background */
+    background: #ffffff; /* Dark Gray Background */
     /* border: 2px solid #00bfff; Neon Green Glowing Border */
     border-radius: 15px; /* Rounded Corners */
     padding: 40px 30px;
@@ -33,7 +33,8 @@
     display: flex;
     flex-direction: column;
     margin-bottom: 25px; /* Spacing between fields */
-  }
+    align-items: flex-start; /* Align elements to the left */
+}
   
   /* Label Styling */
   .label {

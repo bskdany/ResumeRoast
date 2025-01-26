@@ -11,10 +11,7 @@ import logo from "../../assets/logo.png"
 const Header: React.FC = () => {
   return (
     <header className={styles.header}>
-      <h1 className={styles.title}>Luigi AI</h1>
-      <div className={styles.logoPlaceholder}>
-        <img src={logo} alt="Luigui AI Logo" className={styles.logo} />
-      </div>
+      <h1 className={styles.title}>Luigi.AI</h1>
     </header>
   );
 };

@@ -8,7 +8,7 @@
     display: flex;
     align-items: center;
     justify-content: space-between;
-    background-color: #cbe4fb; /* Changed from black to white */
+    background-color: #f8f8f8; /* Changed from black to white */
     padding: 20px 40px;
     box-shadow: 0 0 20px rgba(0, 191, 255, 0.3); /* Light Blue Neon Glow */
     z-index: 1000; /* Ensure header stays above other elements */
@@ -16,33 +16,14 @@
   }
   
   .title {
-    color: #00bfff; /* Changed from neon green to light blue */
+    color: #000000; /* Changed from neon green to light blue */
     font-size: 2rem;
     font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
     text-transform: uppercase;
     letter-spacing: 2px;
-    text-shadow: 0 0 10px #00bfff; /* Light Blue Text Glow */
     margin: 0;
   }
   
-  .logoPlaceholder {
-    width: 60px;
-    height: 60px;
-    background-color: #d3d3d3; /* Changed from dark gray to light gray for better contrast */
-    border: 3px solid #00bfff; /* Light Blue Border */
-    border-radius: 50%; /* Circular Shape */
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    box-shadow: 0 0 15px #00bfff; /* Light Blue Glow */
-  }
-  
-  .logo {
-    width: 70px; /* Adjust size as needed */
-    height: 70px;
-    object-fit: contain; /* Ensure the logo scales properly */
-    border-radius: 50%; /* Optional: Make the logo image circular */
-  }
   
   /* Responsive Adjustments for Header */
   @media (max-width: 600px) {

@@ -225,7 +225,7 @@ const FormSection: React.FC = () => {
             id="cv"
             name="cv"
             className={styles.inputField}
-            accept=".pdf, .docx"
+            accept=".pdf"
             required
             aria-label="Upload Cv"
             onChange={handleChange}
@@ -238,9 +238,7 @@ const FormSection: React.FC = () => {
                 onClick={() =>
                   setFormData((prevData) => ({ ...prevData, cv: null }))
                 }
-                className={styles.removeButton}
               >
-                Remove
               </button>
             </div>
           )}
