@@ -1,35 +1,33 @@
 // src/components/FormSection.tsx
 
-import React, { useState } from 'react';
-import styles from './FormSection.module.css';
+import React, { useState } from "react";
+import styles from "./FormSection.module.css";
 
 const FormSection: React.FC = () => {
   // State to hold form inputs
   const [formData, setFormData] = useState({
-    name: '',
-    jobTitle: '',
+    name: "",
+    jobTitle: "",
     tolerance: 50, // Default at 50%
     cv: null as File | null,
   });
 
   // State to manage form errors
   const [errors, setErrors] = useState({
-    name: '',
-    jobTitle: '',
-    tolerance: '',
-    cv: '',
+    name: "",
+    jobTitle: "",
+    tolerance: "",
+    cv: "",
   });
 
   // State to manage submission status
   const [isSubmitting, setIsSubmitting] = useState(false);
 
   // Handle input changes
-  const handleChange = (
-    e: React.ChangeEvent<HTMLInputElement>
-  ) => {
+  const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     const { name, value, type, files } = e.target;
 
-    if (type === 'file') {
+    if (type === "file") {
       setFormData((prevData) => ({
         ...prevData,
         [name]: files && files[0] ? files[0] : null,
@@ -37,53 +35,46 @@ const FormSection: React.FC = () => {
     } else {
       setFormData((prevData) => ({
         ...prevData,
-        [name]: type === 'range' ? Number(value) : value,
+        [name]: type === "range" ? Number(value) : value,
       }));
     }
 
     // Clear the error for the current field
     setErrors((prevErrors) => ({
       ...prevErrors,
-      [name]: '',
+      [name]: "",
     }));
   };
 
   // Validate form inputs
   const validate = () => {
-    const newErrors: { name: string; jobTitle: string; tolerance: string; cv: string } = {
-      name: '',
-      jobTitle: '',
-      tolerance: '',
-      cv: '',
-    };
+    const newErrors: { [key: string]: string } = {};
 
     if (!formData.name.trim()) {
-      newErrors.name = 'Name is required.';
+      newErrors.name = "Name is required.";
     }
 
     if (!formData.jobTitle.trim()) {
-      newErrors.jobTitle = 'Job Title is required.';
+      newErrors.jobTitle = "Job Title is required.";
     }
 
     if (formData.tolerance < 0 || formData.tolerance > 100) {
-      newErrors.tolerance = 'Tolerance Level must be between 0 and 100.';
+      newErrors.tolerance = "Tolerance Level must be between 0 and 100.";
     }
 
     if (!formData.cv) {
-      newErrors.cv = 'Please upload your cv.';
+      newErrors.cv = "Please upload your cv.";
     } else {
-      const allowedTypes = [
-        'application/pdf',
-      ];
+      const allowedTypes = ["application/pdf"];
       if (!allowedTypes.includes(formData.cv.type)) {
-        newErrors.cv = 'Only PDF files are allowed.';
+        newErrors.cv = "Only PDF files are allowed.";
       }
       const maxSize = 10 * 1024 * 1024; // 5MB
       if (formData.cv.size > maxSize) {
-        newErrors.cv = 'Cv must be smaller than 10MB.';
+        newErrors.cv = "Cv must be smaller than 10MB.";
       }
     }
-
+    // @ts-expect-error cannot set the type of newErrors
     setErrors(newErrors);
 
     // Return true if no errors
@@ -95,6 +86,7 @@ const FormSection: React.FC = () => {
     e.preventDefault();
 
     if (!validate()) {
+      console.log("Form is not valid");
       return;
     }
 
@@ -102,32 +94,34 @@ const FormSection: React.FC = () => {
 
     // Create FormData object
     const submissionData = new FormData();
-    submissionData.append('name', formData.name);
-    submissionData.append('jobTitle', formData.jobTitle);
-    submissionData.append('tolerance', formData.tolerance.toString());
+    submissionData.append("name", formData.name);
+    submissionData.append("jobTitle", formData.jobTitle);
+    submissionData.append("tolerance", formData.tolerance.toString());
     if (formData.cv) {
-      submissionData.append('cv', formData.cv);
+      submissionData.append("cv", formData.cv);
     }
 
     try {
-      const response = await fetch('https://resumeroastbackend-ysb5p.kinsta.app/form', {
-        method: 'POST',
-        body: submissionData,
-        
-      });
-      
-      if(response.status == 201){
+      const response = await fetch(
+        "https://resumeroastbackend-ysb5p.kinsta.app/form",
+        {
+          method: "POST",
+          body: submissionData,
+        }
+      );
+
+      if (response.status == 201) {
         setFormData({
-          name: '',
-          jobTitle: '',
+          name: "",
+          jobTitle: "",
           tolerance: 50,
           cv: null,
         });
         setErrors({
-          name: '',
-          jobTitle: '',
-          tolerance: '',
-          cv: '',
+          name: "",
+          jobTitle: "",
+          tolerance: "",
+          cv: "",
         });
         // Optionally, redirect or perform other actions
       } else {
@@ -135,12 +129,12 @@ const FormSection: React.FC = () => {
         const errorData = await response.json();
         alert(
           errorData.message ||
-            'There was an issue submitting the form. Please try again later.'
+            "There was an issue submitting the form. Please try again later."
         );
       }
     } catch (error) {
-      console.error('Error submitting form:', error);
-      alert('An unexpected error occurred. Please try again later.');
+      console.error("Error submitting form:", error);
+      alert("An unexpected error occurred. Please try again later.");
     } finally {
       setIsSubmitting(false);
     }
@@ -243,22 +237,15 @@ const FormSection: React.FC = () => {
                 onClick={() =>
                   setFormData((prevData) => ({ ...prevData, cv: null }))
                 }
-              >
-              </button>
+              ></button>
             </div>
           )}
-          {errors.cv && (
-            <span className={styles.error}>{errors.cv}</span>
-          )}
+          {errors.cv && <span className={styles.error}>{errors.cv}</span>}
         </div>
 
         {/* Submit Button */}
-        <button
-          type="submit"
-          className={styles.button}
-          disabled={isSubmitting}
-        >
-          {isSubmitting ? 'Submitting...' : 'Submit'}
+        <button type="submit" className={styles.button} disabled={isSubmitting}>
+          {isSubmitting ? "Submitting..." : "Submit"}
         </button>
       </form>
     </section>

@@ -12,7 +12,7 @@ const Luigi = () => {
 
   const fetchAudio = async () => {
     try {
-      const response = await fetch("http://localhost:8080/get-audio");
+      const response = await fetch("https://resumeroastbackend-ysb5p.kinsta.app/get-audio");
 
       const contentType = response.headers.get("content-type");
 
