@@ -1,13 +1,14 @@
 import { useEffect, useState, useRef } from "react";
 const Luigi = () => {
-  const [isFirstImage, setIsFirstImage] = useState(true);
   const [isAudioPresent, setIsAudioPresent] = useState(false);
   const audioRef = useRef<HTMLAudioElement | null>(null);
 
-  const handleKeyPress = (event: KeyboardEvent) => {
-    if (event.code === "Space") {
-      setIsFirstImage((prev) => !prev);
-    }
+  const imageList = ['luigi.png', 'luigi_talk.png'];
+  const [currentImage, setCurrentImage] = useState<string>(imageList[0]);
+
+  const getRandomImage = () => {
+    const randomIndex = Math.floor(Math.random() * imageList.length);
+    return imageList[randomIndex];
   };
 
   const fetchAudio = async () => {
@@ -36,9 +37,17 @@ const Luigi = () => {
           .play()
           .then(() => {
             setIsAudioPresent(true);
+            setCurrentImage(getRandomImage()); // Set initial image
+
+            const intervalId = setInterval(() => {
+              setCurrentImage(getRandomImage());
+            }, 200); // Change image every 500ms
+
             audio.onended = () => {
               setIsAudioPresent(false);
               URL.revokeObjectURL(url);
+              clearInterval(intervalId); // Clear interval when audio ends
+              setCurrentImage(imageList[0]);
             };
           })
           .catch((error) => {
@@ -55,9 +64,7 @@ const Luigi = () => {
   };
 
   useEffect(() => {
-    window.addEventListener("keydown", handleKeyPress);
     return () => {
-      window.removeEventListener("keydown", handleKeyPress);
       // Cleanup audio on unmount
       if (audioRef.current) {
         audioRef.current.pause();
@@ -91,7 +98,7 @@ const Luigi = () => {
     >
       <button>CLICK ME</button>
       <img
-        src={isFirstImage ? "/luigi.png" : "/luigi_talk.png"}
+        src={currentImage}
         alt="Switchable content"
         style={{
           position: "fixed",
