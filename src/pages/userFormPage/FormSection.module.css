@@ -1,0 +1,168 @@
+/* src/components/FormSection.module.css */
+
+/* Container to center the form vertically and horizontally */
+.formSection {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  min-height: 100vh; /* Full viewport height */
+  width: 100vw; /* Full viewport width */
+  background-color: #ffffff; /* Solid background */
+  box-sizing: border-box;
+  padding-top: 120px; /* Add space between header and form */
+}
+  
+  /* Form Container with dark gray background and neon green glowing border */
+  .formContainer {
+    background: #deecfa; /* Dark Gray Background */
+    /* border: 2px solid #00bfff; Neon Green Glowing Border */
+    border-radius: 15px; /* Rounded Corners */
+    padding: 40px 30px;
+    /* box-shadow: 0 0 20px #00bfff; Neon Glow */
+    display: flex;
+    flex-direction: column; /* Stack elements vertically */
+    align-items: center; /* Center elements horizontally */
+    width: 100%;
+    max-width: 500px; /* Responsive Width */
+    box-sizing: border-box;
+  }
+  
+  /* Form Group for each input field */
+  .formGroup {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    margin-bottom: 25px; /* Spacing between fields */
+  }
+  
+  /* Label Styling */
+  .label {
+    margin-bottom: 10px;
+    font-size: 1.5rem;
+    font-weight: 600;
+    letter-spacing: 0.5px;
+    color: #000000; /* Neon Green Text */
+    text-shadow: 0 0 5px #fbfbfb; /* Subtle Glow */
+    /* margin-right: auto; */
+  }
+  
+  /* Text Input and File Upload Styling */
+  .inputField {
+    padding: 12px 15px;
+    border: 2px solid #d3f9ff; /* Neon Green Border */
+    background-color: #ffffff; /* Black Background */
+    color: #000000; /* Neon Green Text */
+    border-radius: 8px; /* Rounded Corners */
+    font-size: 1rem;
+    transition: border 0.3s ease, box-shadow 0.3s ease;
+    width: 100%;
+    box-sizing: border-box;
+  }
+
+  .error {
+    color: #000000;
+  }
+  
+  .inputField:focus {
+    outline: none;
+    border-color: #d3f9ff; /* Brighter Neon Green on Focus */
+    box-shadow: 0 0 10px #d3f9ff; /* Glowing Effect */
+  }
+  
+  /* Slider Container to hold slider and labels */
+  .sliderContainer {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+  }
+  
+  /* Slider Styling */
+  .slider {
+    -webkit-appearance: none; /* Remove default styling */
+    width: 100%;
+    height: 10px;
+    border-radius: 5px;
+    background: #d3f9ff; /* Neon Green Track */
+    outline: none;
+    transition: box-shadow 0.3s ease;
+    cursor: pointer;
+  }
+  
+  .slider:hover,
+  .slider:focus {
+    box-shadow: 0 0 10px #81d7ff; /* Glow on Hover/Focus */
+  }
+  
+  /* Slider Thumb Styling */
+  .slider::-webkit-slider-thumb {
+    -webkit-appearance: none;
+    appearance: none;
+    width: 24px;
+    height: 24px;
+    border-radius: 50%;
+    background: #d3f9ff; /* Neon Green Thumb */
+    border: 2px solid #000000; /* Black Border */
+    box-shadow: 0 0 8px #d3f9ff; /* Glow Effect */
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+  }
+  
+  .slider::-webkit-slider-thumb:hover {
+    box-shadow: 0 0 15px #76FF03; /* Enhanced Glow on Hover */
+    transform: scale(1.1); /* Slight Scaling on Hover */
+  }
+  
+  /* Slider Labels */
+  .sliderLabels {
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr;
+    width: 100%;
+    margin-top: 10px; /* Spacing from Slider */
+    font-size: 0.9rem;
+    color: #000000; /* Neon Green Text */
+  }
+
+  .sliderLabel {
+    margin: auto;
+  }
+  
+  /* Submit Button Styling */
+  .button {
+    background: #d3f9ff; /* Neon Green Background */
+    color: #000000; /* Black Text */
+    padding: 14px 25px;
+    border: none;
+    border-radius: 10px; /* Rounded Corners */
+    cursor: pointer;
+    font-size: 1.2rem;
+    font-weight: bold;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    transition: transform 0.2s ease, box-shadow 0.3s ease;
+    box-shadow: 0 4px 15px 0 #d3f9ff(57, 255, 20, 0.4); /* Subtle Glow */
+    align-self: center; /* Center the button */
+    width: 100%;
+    max-width: 200px; /* Limit button width */
+    box-sizing: border-box;
+  }
+  
+  .button:hover {
+    transform: translateY(-3px) scale(1.03); /* Slight Lift and Scale on Hover */
+    box-shadow: 0 0 25px #d3f9ff, 0 0 10px #d3f9ff inset; /* Enhanced Glow */
+  }
+  
+  .button:active {
+    transform: translateY(0) scale(1); /* Reset Position on Click */
+    box-shadow: 0 4px 15px 0 rgba(57, 255, 20, 0.4); /* Reset Glow */
+  }
+  
+  /* Responsive Design for Smaller Screens */
+  @media (max-width: 600px) {
+    .formContainer {
+      padding: 30px 20px;
+    }
+  
+    .button {
+      max-width: none;
+    }
+  }

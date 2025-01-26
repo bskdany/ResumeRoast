@@ -1,0 +1,159 @@
+/* src/components/FormSection.module.css */
+
+/* Container to center the form vertically and horizontally */
+.formSection {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  min-height: 100vh; /* Full viewport height */
+  width: 100vw; /* Full viewport width */
+  background-color: #ffffff; /* Changed to solid white background */
+  padding: 20px;
+  box-sizing: border-box;
+}
+
+/* Form Container with light gray background and light blue glowing border */
+.formContainer {
+  background: #f0f0f0; /* Light Gray Background for better contrast */
+  border: 2px solid #00bfff; /* Light Blue Glowing Border */
+  border-radius: 15px; /* Rounded Corners */
+  padding: 40px 30px;
+  box-shadow: 0 0 20px #00bfff; /* Light Blue Glow */
+  display: flex;
+  flex-direction: column; /* Stack elements vertically */
+  align-items: center; /* Center elements horizontally */
+  width: 100%;
+  max-width: 500px; /* Responsive Width */
+  box-sizing: border-box;
+}
+
+/* Form Group for each input field */
+.formGroup {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  margin-bottom: 25px; /* Spacing between fields */
+}
+
+/* Label Styling */
+.label {
+  margin-bottom: 10px;
+  font-size: 1.1rem;
+  font-weight: 600;
+  letter-spacing: 0.5px;
+  color: #00bfff; /* Light Blue Text */
+  text-shadow: 0 0 5px #00bfff; /* Subtle Glow */
+}
+
+/* Text Input and File Upload Styling */
+.inputField {
+  padding: 12px 15px;
+  border: 2px solid #00bfff; /* Light Blue Border */
+  background-color: #ffffff; /* White Background */
+  color: #00bfff; /* Light Blue Text */
+  border-radius: 8px; /* Rounded Corners */
+  font-size: 1rem;
+  transition: border 0.3s ease, box-shadow 0.3s ease;
+  width: 100%;
+  box-sizing: border-box;
+}
+
+.inputField:focus {
+  outline: none;
+  border-color: #1e90ff; /* Brighter Light Blue on Focus */
+  box-shadow: 0 0 10px #1e90ff; /* Glowing Effect */
+}
+
+/* Slider Container to hold slider and labels */
+.sliderContainer {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+/* Slider Styling */
+.slider {
+  -webkit-appearance: none; /* Remove default styling */
+  width: 100%;
+  height: 10px;
+  border-radius: 5px;
+  background: #00bfff; /* Light Blue Track */
+  outline: none;
+  transition: box-shadow 0.3s ease;
+  cursor: pointer;
+}
+
+.slider:hover,
+.slider:focus {
+  box-shadow: 0 0 10px #00bfff; /* Glow on Hover/Focus */
+}
+
+/* Slider Thumb Styling */
+.slider::-webkit-slider-thumb {
+  -webkit-appearance: none;
+  appearance: none;
+  width: 24px;
+  height: 24px;
+  border-radius: 50%;
+  background: #00bfff; /* Light Blue Thumb */
+  border: 2px solid #ffffff; /* White Border */
+  box-shadow: 0 0 8px #00bfff; /* Glow Effect */
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.slider::-webkit-slider-thumb:hover {
+  box-shadow: 0 0 15px #1e90ff; /* Enhanced Glow on Hover */
+  transform: scale(1.1); /* Slight Scaling on Hover */
+}
+
+/* Slider Labels */
+.sliderLabels {
+  display: flex;
+  justify-content: space-between;
+  width: 100%;
+  margin-top: 10px; /* Spacing from Slider */
+  font-size: 0.9rem;
+  color: #00bfff; /* Light Blue Text */
+}
+
+/* Submit Button Styling */
+.button {
+  background: #00bfff; /* Light Blue Background */
+  color: #ffffff; /* White Text */
+  padding: 14px 25px;
+  border: none;
+  border-radius: 10px; /* Rounded Corners */
+  cursor: pointer;
+  font-size: 1.2rem;
+  font-weight: bold;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  transition: transform 0.2s ease, box-shadow 0.3s ease;
+  box-shadow: 0 4px 15px 0 rgba(0, 191, 255, 0.4); /* Subtle Glow */
+  align-self: center; /* Center the button */
+  width: 100%;
+  max-width: 200px; /* Limit button width */
+  box-sizing: border-box;
+}
+
+.button:hover {
+  transform: translateY(-3px) scale(1.03); /* Slight Lift and Scale on Hover */
+  box-shadow: 0 0 25px #1e90ff, 0 0 10px #00bfff inset; /* Enhanced Glow */
+}
+
+.button:active {
+  transform: translateY(0) scale(1); /* Reset Position on Click */
+  box-shadow: 0 4px 15px 0 rgba(0, 191, 255, 0.4); /* Reset Glow */
+}
+
+/* Responsive Design for Smaller Screens */
+@media (max-width: 600px) {
+  .formContainer {
+    padding: 30px 20px;
+  }
+
+  .button {
+    max-width: none;
+  }
+}
